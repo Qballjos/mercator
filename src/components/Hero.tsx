@@ -12,8 +12,8 @@ const Hero = () => {
             Mercator Inkoopadviezen helpt u bij procesoptimalisatie, kostenbesparing en strategisch leveranciersmanagement voor meetbare bedrijfsresultaten.
           </p>
           <div className="hero-actions">
-            <a href="#contact" className="btn btn-primary btn-lg">Start Vandaag</a>
-            <a href="#services" className="btn btn-outline btn-lg">Onze Diensten</a>
+            <a href="#contact" className="btn btn-primary btn-lg" aria-label="Start vandaag met inkoopadvies">Start Vandaag</a>
+            <a href="#services" className="btn btn-outline btn-lg" aria-label="Bekijk onze inkoopdiensten">Onze Diensten</a>
           </div>
         </div>
         <div className="hero-visual">

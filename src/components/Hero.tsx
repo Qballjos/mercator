@@ -6,10 +6,10 @@ const Hero = () => {
       <div className="container hero-content">
         <div className="hero-text">
           <h1 className="hero-title">
-            Ontgrendel het potentieel van je bedrijf met <span className="highlight">doelgerichte inkoopstrategieën</span>.
+            Transformeer uw inkoop naar een <span className="highlight">strategisch voordeel</span>.
           </h1>
           <p className="hero-subtitle">
-            Mercator Inkoopadviezen helpt u bij procesoptimalisatie, kostenbesparing en strategisch leveranciersmanagement voor meetbare bedrijfsresultaten.
+            Wij helpen ambitieuze organisaties bij het realiseren van structurele kostenbesparingen en het bouwen van een toekomstbestendige supply chain door middel van data-gedreven inkoopstrategieën.
           </p>
           <div className="hero-actions">
             <a href="#contact" className="btn btn-primary btn-lg" aria-label="Start vandaag met inkoopadvies">Start Vandaag</a>

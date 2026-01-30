@@ -7,7 +7,7 @@ const Header = () => {
         <div className="logo">
           <a href="/" className="logo-link">
             <span className="logo-text">Mercator <span className="logo-sub">Inkoopadviezen</span></span>
-            <p className="logo-tagline">Uw inkooper</p>
+            <p className="logo-tagline">Strategie • Rendement • Groei</p>
           </a>
         </div>
         <nav className="nav" aria-label="Hoofdnavigatie">

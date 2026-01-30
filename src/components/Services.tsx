@@ -2,24 +2,24 @@ import './Services.css';
 
 const services = [
   {
-    title: 'Inkoopstrategieën op Maat',
-    description: 'Onze specialisten werken nauw samen met jouw team om aangepaste inkoopstrategieën te ontwikkelen die aansluiten bij jouw specifieke bedrijfsbehoeften en doelstellingen.',
+    title: 'Strategische Inkoop',
+    description: 'Niet alleen besparen, maar structurele waarde toevoegen. Wij ontwikkelen inkoopstrategieën die naadloos aansluiten op uw lange-termijn organisatiedoelen.',
     icon: '🎯'
   },
   {
-    title: 'Kostenoptimalisatie',
-    description: 'Wij identificeren kansen om kosten te verlagen en efficiëntie te vergroten binnen jouw inkoopcyclus, waardoor jouw bedrijf meer waarde kan halen uit elke uitgave.',
-    icon: '💰'
+    title: 'Rendementsoptimalisatie',
+    description: 'Maximaliseer uw marge door slimme procesoptimalisatie en data-analyse. Wij identificeren verborgen besparingspotentieel in uw gehele inkoopcyclus.',
+    icon: '📊'
   },
   {
-    title: 'Leveranciersmanagement',
-    description: 'Met een focus op het versterken van relaties met leveranciers, helpen wij bij het selecteren en beheren van de juiste partners om de kwaliteit en betrouwbaarheid van jouw toeleveringsketen te waarborgen.',
-    icon: '🤝'
+    title: 'Supplier Excellence',
+    description: 'Bouw aan een veerkrachtige keten met de juiste partners. Wij professionaliseren uw sourcing- en contractmanagement voor maximale kwaliteit en continuïteit.',
+    icon: '🛡️'
   },
   {
-    title: 'Inkoopadvies & Interim Management',
-    description: 'Ons team staat klaar om jou te voorzien van op maat gemaakt inkoopadvies, gericht op het verbeteren van processen en het behalen van meetbare resultaten.',
-    icon: '📈'
+    title: 'Interim & Projectmanagement',
+    description: 'Directe impact op uw inkoopafdeling. Wij bieden ervaren interim-experts die resultaten boeken en zorgen voor duurzame kennisborging binnen uw team.',
+    icon: '🚀'
   }
 ];
 

@@ -17,7 +17,7 @@ const services = [
     icon: '🤝'
   },
   {
-    title: 'Inkoopadvies op Maat',
+    title: 'Inkoopadvies & Interim Management',
     description: 'Ons team staat klaar om jou te voorzien van op maat gemaakt inkoopadvies, gericht op het verbeteren van processen en het behalen van meetbare resultaten.',
     icon: '📈'
   }

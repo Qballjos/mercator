@@ -32,5 +32,5 @@ jobs:
           password: ${{ secrets.SFTP_PASSWORD }} # Of gebruik een SSH key (zie README)
           port: 22
           local_path: './dist/*'
-          remote_path: '/www/'
+          remote_path: 'www/'
           delete_remote_files: false

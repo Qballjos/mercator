@@ -47,8 +47,19 @@ The output will be in the `dist/` directory.
 
 ## 🤖 Automation
 
-- **GitHub Actions**: Automated linting and building on every push and pull request.
-- **Dependabot**: Weekly checks for dependency updates to keep the project secure and up-to-date.
+- **GitHub Actions (CI)**: Automated linting and building on every push and pull request.
+- **Automated Deployment**: On every push to `main`, GitHub builds the project and uploads it to your server via **SFTP**.
+- **Dependabot**: Weekly checks for dependency updates.
+
+### Setting up Auto-Deployment (SFTP)
+
+To make the auto-deployment work, you need to add the following **Secrets** to your GitHub repository (`Settings` > `Secrets and variables` > `Actions`):
+
+1. `SFTP_SERVER`: The host address of your server (e.g., `sftp.jouwdomein.nl` or IP).
+2. `SFTP_USERNAME`: Your SFTP username.
+3. `SFTP_PASSWORD`: Your SFTP password.
+
+*De bestanden worden standaard geüpload naar de `www/` map via poort 22.*
 
 ## 📄 License
 

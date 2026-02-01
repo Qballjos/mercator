@@ -18,7 +18,7 @@ const Footer = () => {
           <h4>Juridisch</h4>
           <p>© {new Date().getFullYear()} Mercator Inkoopadviezen</p>
           <p>KVK: 61103861</p>
-          <p>Thema door Antigravity</p>
+          <p>Website door <a href="https://josvisserict.nl" target="_blank" rel="noopener noreferrer" className="footer-credit-link">Jos Visser | ICT Solutions</a></p>
         </div>
       </div>
     </footer>

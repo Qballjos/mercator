@@ -48,8 +48,19 @@
 
 .footer-legal p {
   font-size: 0.85rem;
-  opacity: 0.5;
+  color: var(--color-text-light);
   margin-bottom: 0.25rem;
+}
+
+.footer-credit-link {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-credit-link:hover {
+  color: var(--color-white);
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {

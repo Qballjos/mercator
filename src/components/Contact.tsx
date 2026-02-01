@@ -41,7 +41,7 @@ const Contact = () => {
       } else {
         setStatus({ type: 'error', message: result.error || 'Er is iets misgegaan. Probeer het later opnieuw.' });
       }
-    } catch (error) {
+    } catch {
       setStatus({ type: 'error', message: 'Kon geen verbinding maken met de server. Controleer uw internetverbinding.' });
     } finally {
       setIsSubmitting(false);

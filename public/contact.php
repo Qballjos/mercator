@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 
 // --- CONFIGURATIE ---
 // Pas dit aan naar het e-mailadres waar de berichten heen moeten
-$to_email = "info@mercatorinkoopadviezen.nl"; 
+$to_email = "info@mercatorinkoopadviezen.nl";
 $subject_prefix = "Nieuw bericht van website: ";
 
 // Alleen POST aanvragen toestaan
@@ -24,10 +24,10 @@ if (!$data) {
 }
 
 // Data valideren en opschonen
-$name = filter_var($data['name'] ?? '', FILTER_SANITIZE_STRING);
+$name = htmlspecialchars(strip_tags($data['name'] ?? ''), ENT_QUOTES, 'UTF-8');
 $email = filter_var($data['email'] ?? '', FILTER_SANITIZE_EMAIL);
-$subject_input = filter_var($data['subject'] ?? '', FILTER_SANITIZE_STRING);
-$message = filter_var($data['message'] ?? '', FILTER_SANITIZE_STRING);
+$subject_input = htmlspecialchars(strip_tags($data['subject'] ?? ''), ENT_QUOTES, 'UTF-8');
+$message = htmlspecialchars(strip_tags($data['message'] ?? ''), ENT_QUOTES, 'UTF-8');
 
 if (empty($name) || empty($email) || empty($message)) {
     http_response_code(400);
@@ -49,8 +49,10 @@ $email_body .= "Email: $email\n";
 $email_body .= "Onderwerp: $subject_input\n\n";
 $email_body .= "Bericht:\n$message\n";
 
-$headers = "From: $email\r\n";
-$headers .= "Reply-To: $email\r\n";
+// Belangrijk voor gedeelde hosting: de 'From' moet vaak een adres van het domein zelf zijn
+$headers = "From: " . $to_email . "\r\n";
+$headers .= "Reply-To: " . $email . "\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion();
 
 // Email versturen
@@ -58,6 +60,6 @@ if (mail($to_email, $email_subject, $email_body, $headers)) {
     echo json_encode(["success" => "Bericht succesvol verzonden!"]);
 } else {
     http_response_code(500);
-    echo json_encode(["error" => "Er is een fout opgetreden bij het versturen van de e-mail."]);
+    echo json_encode(["error" => "Er is een fout opgetreden bij het versturen van de e-mail op de server. De mail() functie faalde."]);
 }
 ?>

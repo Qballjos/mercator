@@ -49,17 +49,20 @@ $email_body .= "Email: $email\n";
 $email_body .= "Onderwerp: $subject_input\n\n";
 $email_body .= "Bericht:\n$message\n";
 
-// Belangrijk voor gedeelde hosting: de 'From' moet vaak een adres van het domein zelf zijn
+// Belangrijk voor TransIP en andere hosting: de 'From' MOET een adres van het domein zelf zijn
+// We gebruiken het $to_email adres als afzender om te voorkomen dat de mailserver het bericht weigert.
 $headers = "From: " . $to_email . "\r\n";
 $headers .= "Reply-To: " . $email . "\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion();
 
 // Email versturen
-if (mail($to_email, $email_subject, $email_body, $headers)) {
+// Bij TransIP is het soms nodig om een extra parameter (-f) mee te geven om de afzender te forceren
+if (mail($to_email, $email_subject, $email_body, $headers, "-f" . $to_email)) {
     echo json_encode(["success" => "Bericht succesvol verzonden!"]);
 } else {
     http_response_code(500);
-    echo json_encode(["error" => "Er is een fout opgetreden bij het versturen van de e-mail op de server. De mail() functie faalde."]);
+    echo json_encode(["error" => "De e-mail kon niet worden verzonden. Dit kan komen door een serverbeperking. Neem contact op met de beheerder."]);
 }
 ?>

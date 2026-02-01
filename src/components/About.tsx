@@ -1,15 +1,16 @@
 import './About.css';
+import aboutImage from '../assets/about-image.png';
 
 const About = () => {
   return (
     <section id="about" className="about">
       <div className="container about-content">
         <div className="about-visual">
-          <div className="image-placeholder">
-            <span className="placeholder-text">Business Excellence</span>
+          <div className="image-container">
+            <img src={aboutImage} alt="Business Excellence" className="about-image" />
           </div>
           <div className="stat-box">
-            <span className="stat-number">10+</span>
+            <span className="stat-number">20+</span>
             <span className="stat-label">Jaar Ervaring</span>
           </div>
         </div>

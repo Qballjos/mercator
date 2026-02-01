@@ -3,10 +3,17 @@
   top: 0;
   left: 0;
   width: 100%;
+  padding: calc(var(--space-sm) * 1.5) 0;
+  background-color: transparent;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.header.is-scrolled {
   padding: var(--space-sm) 0;
   background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
-  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 

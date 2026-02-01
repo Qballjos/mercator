@@ -49,25 +49,25 @@ $email_body .= "Email: $email\n";
 $email_body .= "Onderwerp: $subject_input\n\n";
 $email_body .= "Bericht:\n$message\n";
 
-// Voor TransIP: line endings moeten vaak \n zijn in plaats van \r\n
-ini_set('sendmail_from', $to_email);
-
-$headers = "From: " . $to_email . "\n";
-$headers .= "Reply-To: " . $email . "\n";
-$headers .= "MIME-Version: 1.0\n";
-$headers .= "Content-Type: text/plain; charset=UTF-8\n";
+// Voor TransIP: Sommige servers vereisen \r\n ongeacht het OS.
+// We zorgen ook dat de From header exact overeenkomt met een geautoriseerd adres.
+$from_name = "Mercator Website";
+$headers = "From: " . $from_name . " <" . $to_email . ">\r\n";
+$headers .= "Reply-To: " . $email . "\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion();
 
 // Email versturen
-// De extra parameter -f is cruciaal bij TransIP
+// De extra parameter -f (zonder spatie) is essentieel voor TransIP mailservers
 $success = mail($to_email, $email_subject, $email_body, $headers, "-f" . $to_email);
 
 if ($success) {
     echo json_encode(["success" => "Bericht succesvol verzonden!"]);
 } else {
     http_response_code(500);
-    $error_msg = "De e-mail kon niet worden verzonden. Dit kan komen door een serverbeperking op TransIP. ";
-    $error_msg .= "Zorg ervoor dat het afzenderadres (" . $to_email . ") een bestaand e-mailaccount is in je TransIP paneel.";
+    $error_msg = "De e-mail kon niet worden verzonden door de server. ";
+    $error_msg .= "Controleer of 'info@mercatorinkoopadviezen.nl' als afzender is toegestaan in je TransIP paneel onder 'PHP instellingen' > 'sendmail_from'.";
     echo json_encode(["error" => $error_msg]);
 }
 ?>

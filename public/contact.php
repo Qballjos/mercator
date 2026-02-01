@@ -51,16 +51,14 @@ $email_body .= "Email: $email\n";
 $email_body .= "Onderwerp: $subject_input\n\n";
 $email_body .= "Bericht:\n$message\n";
 
-// Voor TransIP: We gebruiken het adres dat in sendmail_from staat ingesteld
-$from_name = "Mercator Website";
-$headers = "From: " . $from_name . " <" . $from_email . ">\r\n";
+// Voor TransIP: Hou de headers zo simpel mogelijk. 
+// Geen namen, alleen het geautoriseerde e-mailadres.
+$headers = "From: " . $from_email . "\r\n";
 $headers .= "Reply-To: " . $email . "\r\n";
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion();
 
 // Email versturen
-// De extra parameter -f (zonder spatie) is essentieel en MOET overeenkomen met de geautoriseerde afzender
+// We proberen het nu met de meest basale aanroep
 $success = mail($to_email, $email_subject, $email_body, $headers, "-f" . $from_email);
 
 if ($success) {
@@ -68,7 +66,8 @@ if ($success) {
 } else {
     http_response_code(500);
     $error_msg = "De e-mail kon niet worden verzonden door de server. ";
-    $error_msg .= "Controleer of 'info@mercatorinkoopadviezen.nl' als afzender is toegestaan in je TransIP paneel onder 'PHP instellingen' > 'sendmail_from'.";
+    $error_msg .= "Geadviseerde actie: Controleer in het TransIP paneel of 'noreply@mercatorinkoopadviezen.nl' correct staat ingesteld bij 'sendmail_from'. ";
+    $error_msg .= "Als dat zo is, neem dan contact op met TransIP support; de mail() functie op de server weigert de opdracht.";
     echo json_encode(["error" => $error_msg]);
 }
 ?>

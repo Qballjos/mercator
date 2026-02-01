@@ -4,6 +4,8 @@ header('Content-Type: application/json');
 // --- CONFIGURATIE ---
 // Pas dit aan naar het e-mailadres waar de berichten heen moeten
 $to_email = "info@mercatorinkoopadviezen.nl";
+// Dit MOET overeenkomen met de 'sendmail_from' instelling in je TransIP paneel
+$from_email = "noreply@mercatorinkoopadviezen.nl";
 $subject_prefix = "Nieuw bericht van website: ";
 
 // Alleen POST aanvragen toestaan
@@ -49,18 +51,17 @@ $email_body .= "Email: $email\n";
 $email_body .= "Onderwerp: $subject_input\n\n";
 $email_body .= "Bericht:\n$message\n";
 
-// Voor TransIP: Sommige servers vereisen \r\n ongeacht het OS.
-// We zorgen ook dat de From header exact overeenkomt met een geautoriseerd adres.
+// Voor TransIP: We gebruiken het adres dat in sendmail_from staat ingesteld
 $from_name = "Mercator Website";
-$headers = "From: " . $from_name . " <" . $to_email . ">\r\n";
+$headers = "From: " . $from_name . " <" . $from_email . ">\r\n";
 $headers .= "Reply-To: " . $email . "\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion();
 
 // Email versturen
-// De extra parameter -f (zonder spatie) is essentieel voor TransIP mailservers
-$success = mail($to_email, $email_subject, $email_body, $headers, "-f" . $to_email);
+// De extra parameter -f (zonder spatie) is essentieel en MOET overeenkomen met de geautoriseerde afzender
+$success = mail($to_email, $email_subject, $email_body, $headers, "-f" . $from_email);
 
 if ($success) {
     echo json_encode(["success" => "Bericht succesvol verzonden!"]);
